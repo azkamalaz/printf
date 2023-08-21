@@ -6,44 +6,44 @@
  */
 int _printf(const char *format, ...)
 {
-	va_list list;
-	int i = 0, length = 0;
-	int (*func_ptr)(va_list, int);
+	va_list args;
+	int i, len;
+	int (*get_ptr)(va_list, int);
 
-	va_start(list, format);
-
-	if (format == NULL)
+	va_start(args, format);
+	if (!(format))
 		return (-1);
-
-	for ( ; format[i]; i++)
+	i = 0;
+	len = 0;
+	while (format && format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
 			if (format[i] == '%')
 			{
-				length = length + (format[i]);
+				len += _putchar(format[i]);
+				i++;
 				continue;
 			}
 			if (format[i] == '\0')
-			{
-				va_end(list);
 				return (-1);
-			}
-			func_ptr = get_functions(format[i]);
-			if (func_ptr != NULL)
-				length = func_ptr(list, length);
+			get_ptr = get_functions(format[i]);
+			if (get_ptr != NULL)
+				len = get_ptr(args, len);
 			else
 			{
-				length = length + _putchar(format[i - 1]);
-				length = length + _putchar(format[i]);
+				len += _putchar(format[i - 1]);
+				len += _putchar(format[i]);
 			}
+			i++;
 		}
 		else
 		{
-			length = length + _putchar(format[i]);
+			len += _putchar(format[i]);
+			i++;
 		}
 	}
-	va_end(list);
-	return (length);
+	va_end(args);
+	return (len);
 }
