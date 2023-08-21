@@ -1,4 +1,32 @@
 #include "main.h"
+
+/**
+  *get_functions - returns pointer to function.
+  *@fptr_find: character to be used to find pointer function.
+  *Return: pointer to function or NULL.
+  */
+int (*get_functions(char fptr_find))(va_list, int)
+{
+	FormatFunction funcs[] = {
+		{'c', chars_func},
+		{'s', strs_func},
+		{'d', int_func},
+		{'i', int_func}
+	};
+
+	int i;
+
+	for (i = 0; funcs[i].format_spec; i++)
+	{
+		if (fptr_find == funcs[i].format_spec)
+		{
+			return (funcs[i].print_func);
+		}
+	}
+
+	return (NULL);
+}
+
 /**
  * _printf - my own printf function.
  * @format: format.
@@ -6,44 +34,44 @@
  */
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int i, len;
-	int (*get_ptr)(va_list, int);
+	va_list list;
+	int a, str_length;
+	int (*func)(va_list, int);
 
-	va_start(args, format);
-	if (!(format))
+	va_start(list, format);
+	if (format == NULL)
 		return (-1);
-	i = 0;
-	len = 0;
-	while (format && format[i])
+	a = 0;
+	str_length = 0;
+	while (format && format[a])
 	{
-		if (format[i] == '%')
+		if (format[a] == '%')
 		{
-			i++;
-			if (format[i] == '%')
+			a++;
+			if (format[a] == '%')
 			{
-				len += _putchar(format[i]);
-				i++;
+				str_length = str_length + _putchar(format[a]);
+				a++;
 				continue;
 			}
-			if (format[i] == '\0')
+			if (format[a] == '\0')
 				return (-1);
-			get_ptr = get_functions(format[i]);
-			if (get_ptr != NULL)
-				len = get_ptr(args, len);
+			func = get_functions(format[a]);
+			if (func != NULL)
+				str_length = func(list, str_length);
 			else
 			{
-				len += _putchar(format[i - 1]);
-				len += _putchar(format[i]);
+				str_length = str_length + _putchar(format[a - 1]);
+				str_length = str_length + _putchar(format[a]);
 			}
-			i++;
+			a++;
 		}
 		else
 		{
-			len += _putchar(format[i]);
-			i++;
+			str_length = str_length + _putchar(format[a]);
+			a++;
 		}
 	}
-	va_end(args);
-	return (len);
+	va_end(list);
+	return (str_length);
 }
