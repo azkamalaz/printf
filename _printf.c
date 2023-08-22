@@ -12,14 +12,15 @@ int (*get_functions(char fptr_find))(va_list, int)
 		{'s', strs_func},
 		{'d', int_func},
 		{'i', int_func},
+		{'b', check_uns_func},
 		{'u', unsigned_func},
 		{'o', octal_func},
 		{'x', hex_func},
 		{'X', HEX_func},
-		{'R', rot13_func},
-		{'b', check_uns_func},
 		{'S', non_print_str},
-		{'p', print_address}
+		{'p', print_address},
+		{'r', str_rev_func},
+		{'R', rot13_func}
 	};
 
 	int i;

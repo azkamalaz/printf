@@ -37,6 +37,7 @@ int rot13_func(va_list n, int str_length);
 int non_print_str(va_list n, int str_length);
 int print_address(va_list n, int str_length);
 int _puts(char *str);
+int str_rev_func(va_list chars, int str_len);
 
 /*team: Abosede Ajoloko, Kamal Azenag*/
 #endif
