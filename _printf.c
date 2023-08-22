@@ -7,20 +7,27 @@
   */
 int (*get_functions(char fptr_find))(va_list, int)
 {
-	FormatFunction funcs[] = {
+	match funcs[] = {
 		{'c', chars_func},
 		{'s', strs_func},
 		{'d', int_func},
-		{'i', int_func}
+		{'i', int_func},
+		{'u', unsigned_func},
+		{'o', octal_func},
+		{'x', hex_func},
+		{'X', HEX_func},
+		{'R', rot13_func},
+		{'b', check_uns_func},
+		{'S', non_print_str}
 	};
 
 	int i;
 
-	for (i = 0; funcs[i].format_spec; i++)
+	for (i = 0; funcs[i].id; i++)
 	{
-		if (fptr_find == funcs[i].format_spec)
+		if (fptr_find == funcs[i].id)
 		{
-			return (funcs[i].print_func);
+			return (funcs[i].f);
 		}
 	}
 
@@ -75,3 +82,4 @@ int _printf(const char *format, ...)
 	va_end(list);
 	return (str_length);
 }
+/*team: Abosede Ajoloko, Kamal Azenag*/
