@@ -1,9 +1,8 @@
 #include "main.h"
-
 /**
-  * unsigned_func- Prints an unsigned integer
+  * unsigned_func - Prints an unsigned integer
   * @n: arguments
-  * @str_lenght: string length
+  * @str_length: string length
   * Return: length
   */
 
@@ -15,4 +14,4 @@ int unsigned_func(va_list n, int str_length)
 
 	return (str_length);
 }
-/team: Abosede Ajoloko, Kamal Azenag/
+/*team: Abosede Ajoloko, Kamal Azenag*/

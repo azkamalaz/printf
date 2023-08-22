@@ -15,4 +15,4 @@ int octal_func(va_list n, int str_length)
 
 	return (str_length);
 }
-/team: Abosede Ajoloko, Kamal Azenag/
+/*team: Abosede Ajoloko, Kamal Azenag*/

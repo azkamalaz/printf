@@ -17,4 +17,4 @@ int binary_func(unsigned int num, int str_length)
 	str_length = str_length + len_func(num, 2);
 	return (str_length + 1);
 }
-/team: Abosede Ajoloko, Kamal Azenag/
+/*team: Abosede Ajoloko, Kamal Azenag*/
