@@ -35,6 +35,8 @@ int check_uns_func(va_list n, int str_length);
 int binary_func(unsigned int num, int str_length);
 int rot13_func(va_list n, int str_length);
 int non_print_str(va_list n, int str_length);
+int print_address(va_list n, int str_length);
+int _puts(char *str);
 
 /*team: Abosede Ajoloko, Kamal Azenag*/
 #endif

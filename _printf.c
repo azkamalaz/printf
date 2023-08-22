@@ -18,7 +18,8 @@ int (*get_functions(char fptr_find))(va_list, int)
 		{'X', HEX_func},
 		{'R', rot13_func},
 		{'b', check_uns_func},
-		{'S', non_print_str}
+		{'S', non_print_str},
+		{'p', print_address}
 	};
 
 	int i;
