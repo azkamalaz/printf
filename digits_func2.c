@@ -1,4 +1,4 @@
-#include "main.h"
+
 /**
   * digits_func2 - Print digits.
   * @num: digits.
@@ -10,10 +10,23 @@
 int digits_func2(unsigned long num, unsigned int targ, const char *digits)
 {
 	int length = 0;
+	char buffer[32];
+	int i;
+	int index = 0;
 
-	if (num >= targ)
-		length = digits_func2((num / targ), targ, digits);
-	length += _putchar(digits[num % targ]);
+	while (num >= targ)
+	{
+		buffer[index++] = digits[num % targ];
+		num /= targ;
+	}
+
+	buffer[index] = digits[num];
+
+	for (i = index; i >= 0; i--)
+	{
+		_putchar(buffer[i]);
+		length++;
+	}
 
 	return (length);
 }
