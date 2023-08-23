@@ -26,6 +26,7 @@ int strs_func(va_list, int);
 int int_func(va_list, int);
 int print_int_func(int, int);
 int digits_func(unsigned long num, unsigned int targ, const char *digits);
+int digits_func2(unsigned long num, unsigned int targ, const char *digits);
 unsigned int len_func(unsigned int, int);
 int unsigned_func(va_list n, int str_length);
 int octal_func(va_list n, int str_length);

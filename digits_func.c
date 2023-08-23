@@ -14,3 +14,4 @@ int digits_func(unsigned long num, unsigned int targ, const char *digits)
 	_putchar(digits[num % targ]);
 	return (len_func(num, targ) + 1);
 }
+/*team: Abosede Ajoloko, Kamal Azenag*/

@@ -11,7 +11,7 @@ int print_address(va_list n, int str_length)
 	void *address = va_arg(n, void *);
 
 	str_length += _puts("0x");
-	str_length += digits_func((unsigned long)address, 16, "0123456789abcdef");
+	str_length += digits_func2((unsigned long)address, 16, "0123456789abcdef");
 
 	return (str_length);
 }
