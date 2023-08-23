@@ -9,10 +9,10 @@
 
 int digits_func2(unsigned long num, unsigned int targ, const char *digits)
 {
-	int length;
+	int length = 0;
 
 	if (num >= targ)
-		length = digits_func2((num / targ), targ, digits);
+		length += digits_func2((num / targ), targ, digits);
 	length += _putchar(digits[num % targ]);
 
 	return (length);
